@@ -42,7 +42,7 @@ export class MapaComponent implements OnInit {
   baseMaps =
     {
       // tslint:disable-next-line: object-literal-key-quotes
-      'Mapbox streets':
+      'Open street':
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
           {
             // tslint:disable-next-line:max-line-length
@@ -51,12 +51,6 @@ export class MapaComponent implements OnInit {
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoicnBla28iLCJhIjoiY2tia3JtZHllMDhncTJ0cjUwbGJyZW5ncCJ9.OkW_RmnaDWYq3pOrTb0MhA'
           }),
-      'Open street' :
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        maxZoom: 18,
-      }),
       'Esri Topo':
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
           {
