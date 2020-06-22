@@ -25,8 +25,7 @@
               {{kat.opis}}
             </button>
             <button mat-icon-button *ngIf="!kat.collapsed && kat.layers.length>0" (click)="checkAll(kat)">
-              <mat-icon>
-                done_all</mat-icon>
+              <mat-icon>done_all</mat-icon>
             </button>
           </h2>
           <mat-list *ngIf="!kat.collapsed">

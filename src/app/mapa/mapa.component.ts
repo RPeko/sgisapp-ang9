@@ -41,15 +41,22 @@ export class MapaComponent implements OnInit {
   baseLayerControl: L.Control;
   baseMaps =
     {
-      'Open street':
+      // tslint:disable-next-line: object-literal-key-quotes
+      'Mapbox streets':
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
           {
             // tslint:disable-next-line:max-line-length
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativeclmmons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox.streets',
-            accessToken: 'pk.eyJ1IjoicnBla28iLCJhIjoiY2prYXNvemtoMDBxMTNxcWYxY29lY3FndSJ9.6m8S5UFtwcWOE1e84569jQ'
+            accessToken: 'pk.eyJ1IjoicnBla28iLCJhIjoiY2tia3JtZHllMDhncTJ0cjUwbGJyZW5ncCJ9.OkW_RmnaDWYq3pOrTb0MhA'
           }),
+      'Open street' :
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+      }),
       'Esri Topo':
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
           {
