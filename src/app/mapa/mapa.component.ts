@@ -30,7 +30,7 @@ import { Layer } from 'src/models/layer';
 export class MapaComponent implements OnInit {
   mymap: L.Map;
   selectedIdKO = 7;
-  KO: KO = { idKO: 1,  nazivKO: 'Srbobran', rBrKO: 1, centarx: 45.548926, centary: 19.792946, zoom: 15 };
+  KO: KO = { idKO: 1, nazivKO: 'Srbobran', rBrKO: 1, centarx: 45.548926, centary: 19.792946, zoom: 15 };
   listaKO: KO[];
   layers: Array<Layer> = [];
   errorMessage: string;
@@ -41,16 +41,23 @@ export class MapaComponent implements OnInit {
   baseLayerControl: L.Control;
   baseMaps =
     {
-      // tslint:disable-next-line: object-literal-key-quotes
-      'Open street':
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
-          {
-            // tslint:disable-next-line:max-line-length
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativeclmmons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox.streets',
-            accessToken: 'pk.eyJ1IjoicnBla28iLCJhIjoiY2tia3JtZHllMDhncTJ0cjUwbGJyZW5ncCJ9.OkW_RmnaDWYq3pOrTb0MhA'
-          }),
+      'Mapbox openstreet':
+        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+          attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken: 'pk.eyJ1IjoicnBla28iLCJhIjoiY2tia3JtZHllMDhncTJ0cjUwbGJyZW5ncCJ9.OkW_RmnaDWYq3pOrTb0MhA'
+        }),
+      'Stadia outdoor':
+        L.tileLayer('https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png', {
+          maxZoom: 20,
+          attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        }),
+      'Openstreet mapnik':
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }),
       'Esri Topo':
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
           {
@@ -79,7 +86,7 @@ export class MapaComponent implements OnInit {
   ngOnInit() {
     this.mymap = L.map('lmapa', { zoomSnap: 0.2, zoomControl: false })
       .setView(L.latLng(this.KO.centarx, this.KO.centary), this.KO.zoom);
-    this.baseMaps['Open street'].addTo(this.mymap);
+    this.baseMaps['Mapbox openstreet'].addTo(this.mymap);
     this.eventEmitter.KOChange.subscribe((ko: KO) => {
       // console.log(JSON.stringify(ko));
       this.KO = ko;
@@ -107,7 +114,7 @@ export class MapaComponent implements OnInit {
       title: 'Štampanje',
       position: 'topright',
       sizeModes: ['A4Portrait', 'A4Landscape']
-  }).addTo(this.mymap);
+    }).addTo(this.mymap);
   }
 
 
@@ -220,7 +227,7 @@ export class MapaComponent implements OnInit {
     divElement.appendChild(pElement);
     lmm.bindPopup(divElement);
     if (tacka.label) {
-      lmm.bindTooltip(tacka.label, { permanent: true, direction: 'right',  opacity: '0.3', className: 'label' });
+      lmm.bindTooltip(tacka.label, { permanent: true, direction: 'right', opacity: '0.3', className: 'label' });
     } else {
       lmm.bindTooltip(tacka.tooltip, { opacity: 0.7 });
     }
@@ -382,7 +389,7 @@ export class MapaComponent implements OnInit {
 
     return lmp;
   }
-// //////////////////////
+  // //////////////////////
 
   changedLayerPreview(layer: Layer) {
     switch (layer.vrsta) {
