@@ -46,24 +46,28 @@ export class MapaComponent implements OnInit {
           attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
           tileSize: 512,
           zoomOffset: -1,
-          accessToken: 'pk.eyJ1IjoicnBla28iLCJhIjoiY2tia3JtZHllMDhncTJ0cjUwbGJyZW5ncCJ9.OkW_RmnaDWYq3pOrTb0MhA'
+          accessToken: 'pk.eyJ1IjoicnBla28iLCJhIjoiY2tia3JtZHllMDhncTJ0cjUwbGJyZW5ncCJ9.OkW_RmnaDWYq3pOrTb0MhA',
+          opacity: 0.5
         }),
       'Openstreet mapnik':
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          opacity: 0.5
         }),
       'Esri Topo':
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
           {
             // tslint:disable-next-line:max-line-length
-            attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+            attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community',
+            opacity: 0.5
           }),
       'Esri World Imaginary':
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
           {
             // tslint:disable-next-line:max-line-length
-            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+            opacity: 0.7
           }),
       'Bez osnovne mape':
         L.tileLayer('')
