@@ -53,6 +53,10 @@
     z-index:999;
 }
 
+.poruka {
+    color : red;
+}
+
 .ogranicenje {
     padding-left: 20px;
     padding-top: 50px;
