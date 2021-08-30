@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { MapaComponent } from './mapa/mapa.component';
 
 const routes: Routes = [
-  { path: 'mapa', component: MapaComponent },
-  { path: '', redirectTo: '/mapa', pathMatch: 'full' },
-  { path: '**', redirectTo: '/mapa'}
+  { path: '', component: MapaComponent },
+  // { path: '', redirectTo: '/mapa', pathMatch: 'full' },
+  { path: '**', redirectTo: ''}
 
 ];
 
