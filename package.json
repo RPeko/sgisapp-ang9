@@ -23,6 +23,7 @@
     "@angular/router": "~9.1.9",
     "@ngx-pwa/local-storage": "^9.0.3",
     "express": "^4.17.1",
+    "heroku-ssl-redirect": "^0.1.1",
     "leaflet": "^1.6.0",
     "leaflet-easyprint": "^2.1.9",
     "ngx-color-picker": "^9.1.0",
