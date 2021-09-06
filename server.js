@@ -1,5 +1,4 @@
 //Install express server
-var sslRedirect = require('heroku-ssl-redirect');
 const express = require('express');
 const path = require('path');
 
@@ -12,9 +11,13 @@ app.set('port', process.env.PORT || 5000);
 app.get('/*', function(req,res) {  
 res.sendFile(path.join(__dirname+'/dist/sgisapp/index.html'));
 });
-
-// enable ssl redirect
-app.use(sslRedirect());
+app.use(function (req, res, next) {
+  if (req.secure) {
+    next();
+  } else {
+    res.redirect('https://' + req.headers.host + req.url);
+  }
+});
 
 // Start the app by listening on the default Heroku port
 app.listen(app.get('port'), function () {
