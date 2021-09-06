@@ -19,7 +19,6 @@ app.use(function (req, res, next) {
   }
   next()
 });
-
 // Start the app by listening on the default Heroku port
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
