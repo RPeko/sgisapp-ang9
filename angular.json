@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sgfe11": {
+    "sgfe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sgfe11",
+            "outputPath": "dist/sgfe",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sgfe11:build"
+            "browserTarget": "sgfe:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "sgfe11:build:production"
+              "browserTarget": "sgfe:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sgfe11:build"
+            "browserTarget": "sgfe:build"
           }
         },
         "test": {
@@ -115,16 +115,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sgfe11:serve"
+            "devServerTarget": "sgfe:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "sgfe11:serve:production"
+              "devServerTarget": "sgfe:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "sgfe11"
+  "defaultProject": "sgfe"
 }
