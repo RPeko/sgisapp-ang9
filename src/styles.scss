@@ -26,3 +26,6 @@ $gis-theme: mat-dark-theme($gis-primary, $gis-accent, $gis-warn);
 @include angular-material-theme($gis-theme);
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
