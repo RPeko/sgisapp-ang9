@@ -38,6 +38,12 @@ export class MapaComponent implements OnInit {
   listaLmlLinijaLayera: LmlLinijaLayera[] = new Array<LmlLinijaLayera>();
   listaLmpPoligonLayera: LmpPoligonLayera[] = new Array<LmpPoligonLayera>();
   loadedLayers: number[] = [];
+  observer = new ResizeObserver(entries => {
+    entries.forEach(entry => {
+      this.mymap.invalidateSize();
+    });
+  });
+
   baseLayerControl: L.Control;
   baseMaps =
     {
@@ -86,6 +92,7 @@ export class MapaComponent implements OnInit {
     this.mymap = L.map('lmapa', { zoomSnap: 0.2, zoomControl: false })
       .setView(L.latLng(this.KO.centarx, this.KO.centary), this.KO.zoom);
     this.baseMaps['Mapbox openstreet'].addTo(this.mymap);
+    this.observer.observe(document.querySelector(".map-container"));
     this.eventEmitter.KOChange.subscribe((ko: KO) => {
       // console.log(JSON.stringify(ko));
       this.KO = ko;
